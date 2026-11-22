@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROYAL KICK</title>
+<style>
+body{margin:0;background:#101827;color:white;font-family:Arial;text-align:center}
+header{background:#142b4b;padding:25px;color:#ffd45a;font-size:30px;font-weight:bold}
+.card{background:#1b293b;margin:18px;padding:20px;border-radius:15px}
+button{background:#ffd45a;color:#142033;border:0;border-radius:10px;padding:14px;margin:6px;font-size:17px}
+.pitch{height:280px;background:repeating-linear-gradient(#197a48 0 35px,#218653 35px 70px);border:3px solid white;position:relative}
+#player{position:absolute;left:45%;top:65%;font-size:30px}
+#ball{position:absolute;left:50%;top:45%;font-size:25px}
+h2{color:#ffd45a}
+</style>
+</head>
+<body>
+<header>ROYAL KICK ⚽</header>
+<div class="card">
+<h2>مرحباً بك في اللعبة</h2>
+<p>ابدأ مغامرتك الكروية!</p>
+<button onclick="start()">ابدأ المباراة</button>
+</div>
+<div class="card">
+<h2>ملعب المباراة</h2>
+<h2 id="score">0 - 0</h2>
+<div class="pitch">
+<div id="player">🧍🏻</div>
+<div id="ball">⚽</div>
+</div>
+<p id="msg">استعد للمباراة!</p>
+<button onclick="move(-5,0)">يسار</button>
+<button onclick="move(0,-5)">أعلى</button>
+<button onclick="move(0,5)">أسفل</button>
+<button onclick="move(5,0)">يمين</button>
+<br>
+<button onclick="pass()">تمرير</button>
+<button onclick="shoot()">تسديد</button>
+</div>
+<script>
+let x=45,y=65,goals=0;
+function start(){document.getElementById('msg').textContent='بدأت المباراة!'}
+function move(a,b){
+x=Math.max(0,Math.min(90,x+a));
+y=Math.max(0,Math.min(90,y+b));
+let p=document.getElementById('player');
+p.style.left=x+'%';p.style.top=y+'%';
+}
+function pass(){document.getElementById('msg').textContent='تمرير الكرة!'}
+function shoot(){
+goals++;
+document.getElementById('score').textContent=goals+' - 0';
+document.getElementById('msg').textContent='هدف تجريبي!';
+}
+</script>
+</body>
+</html>
